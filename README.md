@@ -23,7 +23,7 @@ To get started with the Django Quiz App, follow these steps:
 1. Clone the repository to your local machine.
 
    ```bash
-   git clone https://github.com/yourusername/Django-Quiz-App.git
+   git clone https://github.com/GwadeSteve/Django-Quiz-App.git
    ```
 
 2. Create a virtual environment and install dependencies.
