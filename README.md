@@ -12,7 +12,7 @@ The Django Quiz App is an open-source web application developed using the Django
 
 - **Responsive Design:** The app is designed with responsive principles, ensuring a seamless experience on various devices, including smartphones, tablets, and desktops.
 
-- **Question Types:** Support for various question types, including multiple-choice, true/false, short answer, and more, making it suitable for diverse subjects and purposes.
+- **Question Types:** Support for various question types, including multiple-choice, true/false, making it suitable for diverse subjects and purposes.
 
 - **Quiz Analytics:** Gain insights into quiz performance, track participant results, and analyze progress through detailed analytics.
 
