@@ -1,19 +1,84 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Application</title>
+    {% block title %}<title>Quiz Application</title>{%endblock%}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Quiz/css/base.css' %}">
+    <style>
+        @media (max-width: 576px) {
+            h1.display-4 {
+                font-size: 2rem;
+            }
+            .lead {
+                font-size: 0.975rem;
+            }
+            .Questions {
+                padding: 0 3% 50px 3%;
+            }
+            .form-check-label{
+                font-size: 0.975rem;
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0.5;
+                transform: translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-left {
+            opacity: 0;
+            animation: fadeleft 0.3s ease-in-out forwards;
+        }
+        
+        @keyframes fadeleft {
+            from {
+                opacity: 0;
+                transform: translateX(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+    {% block styles %}{% endblock %}
 </head>
 
 <body>
-    <h2>Welcome {{user.name}}, Press the Button to start the Session</h2>
-    <a href="{% url 'Users:logout' %}" class="btn btn-primary">LogOut</a>
-    <button id="startQuiz">Start Quiz</button>
-    {% block content %}
-    {% endblock %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">AI Club MCQ</a>
+            <span class="navbar-text">Hi, {{user.name}}</span>
+            <a href="{% url 'Users:logout' %}" class="btn btn-danger ml-auto">
+                Logout <i class="fas fa-sign-out-alt"></i>
+            </a>
+        </div>
+    </nav>
+    <div class="container text-center mt-5 mainbox">
+        <h1 class="display-4 fade-in">Welcome to the AI Club MCQ</h1>
+        <p class="lead mt-4 fade-in">This is a multiple-choice quiz to test your knowledge in Artificial Intelligence and related topics. You will be ranked based on the time taken to answer the questions and your Score. Press the Button to start the Session.</p>
+        <button id="startQuiz" class="btn btn-primary mt-3 btn-lg fade-in">Start Quiz</button>
+    </div>
+    
+    <div class="mt-5 Questions">
+        {% block content %} {% endblock %}
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
-
 </html>

@@ -12,7 +12,9 @@ def main(request):
         # Remove the CSRF token from the copied data
         if 'csrfmiddlewaretoken' in users_answers:
             del users_answers['csrfmiddlewaretoken']
+        count = 0
         for question in Question.objects.all():
+            count += 1
             question_id = str(question.id)
             user_answer = users_answers.get('question_' + question_id)  # Get the selected answer
 
@@ -21,10 +23,14 @@ def main(request):
         user.score = Score
         user.time_taken = time_taken
         user.save()
+        Total = count*10
+        Accuracy = (Score/Total)*100
         print(f"Score = {Score} and time taken = {time_taken}s")
         context = {
             'score': Score,
             'time_taken': time_taken,
+            'total': Total,
+            'accuracy': Accuracy,
         }
         return render(request, 'Quiz/result.html', context)
     else:
