@@ -1,0 +1,12 @@
+{% extends "Quiz/base.html" %}
+
+{% block content %}
+    <div id="results" >
+        <p>{{score}}</p>
+        <p>{{time_taken}}</p>
+        <a href="{% url 'Quiz:home' %}">Try Again</a>
+    </div> 
+    <script>
+        document.getElementById("startQuiz").style.display = "none";
+    </script>
+{% endblock content %}
