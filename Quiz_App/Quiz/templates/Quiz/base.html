@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+</head>
+
+<body>
+    <h2>Welcome {{user.name}}, Press the Button to start the Session</h2>
+    <a href="{% url 'Users:logout' %}" class="btn btn-primary">LogOut</a>
+    <button id="startQuiz">Start Quiz</button>
+    {% block content %}
+        
+    {% endblock %}
+</body>
+
+</html>

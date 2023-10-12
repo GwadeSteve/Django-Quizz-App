@@ -1,0 +1,45 @@
+{% extends "Quiz/base.html" %}
+
+{% block content %}
+    <div id="quizContent" style="display: none;">
+        <p id="timer"></p>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="time_taken" id="time_taken" value="0">
+            {% for question in questions %}
+                <div class="question">
+                    <h2>{{ question.text }}</h2>
+                    <input type="radio" name="question_{{ question.id }}" value="op1"> {{ question.op1 }}<br>
+                    <input type="radio" name="question_{{ question.id }}" value="op2"> {{ question.op2 }}<br>
+                    <input type="radio" name="question_{{ question.id }}" value="op3"> {{ question.op3 }}<br>
+                    <input type="radio" name="question_{{ question.id }}" value="op4"> {{ question.op4 }}<br>
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        let seconds = 0;
+        document.getElementById("startQuiz").addEventListener("click", function() {
+            document.getElementById("quizContent").style.display = "block";
+            startTimer();
+        });
+        function startTimer() {
+            const timerElement = document.getElementById("timer");
+            const timeDisplay = document.getElementById("time_display");
+    
+            function updateTimer() {
+                seconds++;
+                timeDisplay.textContent = seconds;
+            }
+    
+            setInterval(updateTimer, 1000);
+        }
+    
+        // Update the hidden input field before form submission
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function() {
+            document.getElementById("time_taken").value = seconds;
+        });
+    </script>    
+{% endblock content %}

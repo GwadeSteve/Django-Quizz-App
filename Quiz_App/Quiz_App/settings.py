@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Users',
+    'Quiz',
 ]
 
 MIDDLEWARE = [
@@ -75,10 +77,14 @@ WSGI_APPLICATION = 'Quiz_App.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Quiz_App',   
+        'USER': 'postgres',    
+        'PASSWORD': 'irving_203',  
+        'HOST': 'localhost',         
     }
 }
+
 
 
 # Password validation
@@ -98,6 +104,18 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+#MY OWN USER MODEL
+AUTH_USER_MODEL = 'Users.CustomUser'
+
+#Custom authentication
+AUTHENTICATION_BACKENDS = [
+    'Users.auth_backends.CustomUserAuthBackend',  
+]
+
+# LOGOUT REDIRECT URL
+LOGOUT_REDIRECT_URL = '/'
+
 
 
 # Internationalization
