@@ -2,16 +2,16 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, name, email, password=None, **extra_fields):
+    def create_user(self, username, email, password=None, **extra_fields):
         if not email:
             raise ValueError('The Email field must be set')
         email = self.normalize_email(email)
-        user = self.model(name=name, email=email, **extra_fields)
+        user = self.model(username=username, email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, name, email, password=None, **extra_fields):
+    def create_superuser(self, username, email, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -20,7 +20,7 @@ class CustomUserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
 
-        return self.create_user(name, email, password, **extra_fields)
+        return self.create_user(username, email, password, **extra_fields)
     
 class CustomUser(AbstractUser):
     LEVELS = [
@@ -39,7 +39,7 @@ class CustomUser(AbstractUser):
         ('Ing', 'Engineering'),
         ('Sng', 'Engineering Sciences'),
     ]
-    name = models.CharField(max_length=150, unique=True)
+    username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
     sex = models.CharField(max_length=1, choices=GENDER, default=None)
     level = models.CharField(max_length=1, choices=LEVELS, default=None)
@@ -49,11 +49,14 @@ class CustomUser(AbstractUser):
     time_taken = models.PositiveBigIntegerField(default=0)
 
     def __str__(self):
-        return self.name
+        return self.username
 
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
 
-    REQUIRED_FIELDS = ['name','email', 'sex', 'level', 'course_program', 'major']
+    # Define the field to use for authentication
+    USERNAME_FIELD = 'username'
 
+    #R equired fields
+    REQUIRED_FIELDS = ['email', 'sex', 'level', 'course_program', 'major']

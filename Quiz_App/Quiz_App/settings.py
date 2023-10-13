@@ -111,6 +111,7 @@ AUTH_USER_MODEL = 'Users.CustomUser'
 #Custom authentication
 AUTHENTICATION_BACKENDS = [
     'Users.auth_backends.CustomUserAuthBackend',  
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 # LOGOUT REDIRECT URL

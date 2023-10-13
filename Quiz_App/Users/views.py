@@ -9,7 +9,7 @@ def Register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user = authenticate(name=form.cleaned_data['name'], password=form.cleaned_data['password1'])
+            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
             login(request, user)
             return redirect('/')
         else:
@@ -22,14 +22,14 @@ def Login(request):
     if request.method == "POST":
         form = CustomUserLoginForm(data=request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
+            username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(request, name=name, password=password)
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
                 return redirect('/')
             else:
-                messages.error(request, 'Invalid credentials. Please check name and password.')
+                messages.error(request, 'Invalid credentials. Please check username and password.')
     else:
         form = CustomUserLoginForm()
     return render(request, 'Users/login.html', {'form': form})

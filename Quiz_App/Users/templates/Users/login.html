@@ -1,6 +1,28 @@
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Login</button>
-    <p class="text">Don't yet have an account ? <a href="{% url 'Users:register' %}" class="link">Create One</a></p>
-</form>
+{% extends "Users/base.html" %}
+{% load static %}
+
+{% block title %}<title>Login</title>{% endblock%}
+
+{% block content %}
+    <form action="" method="post" class="input-form" style="margin-bottom: 40px; font-weight: bold;"> 
+        <h2 class="registration-title">Login Form</h2>
+        <p>Welcome back, Continue back from you left off</p>
+        <div class="Errors" style="display:none;">
+        </div>
+        {% csrf_token %}
+        <div class="inputs">
+            <div class="group">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="group">
+                <label for="{{ form.password.id_for_label }}">Password</label>
+                {{ form.password }}
+            </div>
+            <button type="submit" class="submit-button">Login</button>
+        </div>
+        <p class="text">Don't yet have an account ? <a href="{% url 'Users:register' %}" class="link">Create One</a></p>
+    </form>
+{% endblock content %}
+
+

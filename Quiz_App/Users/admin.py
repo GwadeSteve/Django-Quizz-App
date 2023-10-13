@@ -4,13 +4,10 @@ from .models import CustomUser
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('name', 'email', 'sex', 'level', 'course_program', 'major', 'points', 'time_taken')
-    list_filter = ('sex', 'level', 'course_program')
-    search_fields = ('name', 'email', 'major')
-    ordering = ('name',)
-
+    list_display = ('username', 'email', 'sex', 'level', 'course_program', 'major', 'is_staff')
+    list_filter = ('sex', 'level', 'course_program', 'major', 'is_staff')
     fieldsets = (
-        (None, {'fields': ('name', 'email', 'password')}),
+        (None, {'fields': ('username', 'email', 'password')}),
         ('Personal Info', {'fields': ('sex', 'level', 'course_program', 'major')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
@@ -18,8 +15,10 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('name', 'email', 'password1', 'password2'),
+            'fields': ('username', 'email', 'password1', 'password2'),
         }),
     )
+    search_fields = ('username', 'email')
+    ordering = ('username',)
 
 admin.site.register(CustomUser, CustomUserAdmin)
