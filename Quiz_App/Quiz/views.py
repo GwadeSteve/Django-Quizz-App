@@ -40,3 +40,6 @@ def main(request):
         }
         return render(request, 'Quiz/quiz.html', context)
 
+    
+
+
