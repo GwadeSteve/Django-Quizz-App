@@ -2,9 +2,13 @@
 {% load static %}
 {% load time_filter %}
 
-{% block title %}<title>LeaderBoard</title>{% endblock %}
+{% block title %}
+    <title>LeaderBoard</title>
+{% endblock %}
 
-{% block styles %}<link rel="stylesheet" href="{% static 'Quiz/css/leaderboard.css' %}">{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'Quiz/css/leaderboard.css' %}">
+{% endblock %}
 
 {% block What %}
 <div class="container text-center mt-5 mainbox">
@@ -30,14 +34,14 @@
             </thead>
             <tbody>
                 {% for user in leaderboard %}
-                    <tr style="background: green;">
+                    <tr class="{% cycle 'green' 'blue' 'yellow' %}">
                         <td>{{ forloop.counter }}</td>
                         <td>{{ user.username }}</td>
                         <td>{{ user.sex }}</td>
                         <td>{{ user.level }}</td>
                         <td>{{ user.course_program }}</td>
                         <td style="font-family: 'Poppins', sans-serif; font-size: 1rem;">{{ user.points }}</td>
-                        <td style="font-family: 'Poppins', sans-serif; font-size: 1rem;">{{ user.time_taken|format_time }} s</td>
+                        <td style="font-family: 'Poppins', sans-serif; font-size: 1rem;">{{ user.time_taken|format_time }}s</td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -47,8 +51,4 @@
         <a href="{% url 'Quiz:home' %}" class="btn btn-primary">Try Again</a>
     </div>
 </div>
-
-<style>
-</style>
-</script>
 {% endblock content %}
