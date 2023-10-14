@@ -55,25 +55,88 @@
                 transform: translateX(0);
             }
         }
+
+        .fade-right {
+            opacity: 0;
+            animation: faderight 0.3s ease-in-out forwards;
+        }
+
+        @keyframes faderight {
+            from {
+                opacity: 0;
+                transform: translateX(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        nav{
+            background:rgba(228, 228, 228,0.5);
+        }
+
+        .navbar-nav li{
+            margin:0 10px;
+            padding:10px 0;
+        }
+
+        nav li a{
+            border-radius:5px;
+            transition:1s;
+        }
+
+        #name, #leaderboard, #logout{
+            font-weight: 600;
+        }
+
+        #logout:hover{
+            background:rgb(242, 97, 97);
+        }
+
+        #leaderboard{
+            transition:1s;
+            background:rgb(107, 180, 253);
+        }
+
     </style>
     {% block styles %}{% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/">AI Club MCQ</a>
-            <span class="navbar-text">Hi, {{user.username}}</span>
-            <a href="{% url 'Users:logout' %}" class="btn btn-danger ml-auto">
-                Logout <i class="fas fa-sign-out-alt"></i>
-            </a>
+            <a class="navbar-brand text-primary" href='\' style="font-weight: bold;">AI Club MCQ</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <span id="name" class="nav-link">Hi, {{ user.username }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a id="leaderboard" class="nav-link" href="{% url 'Quiz:leaderboard' %}">Leaderboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="logout" class="nav-link" href="{% url 'Users:logout' %}">
+                            Logout <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-    <div class="container text-center mt-5 mainbox">
-        <h1 class="display-4 fade-in">Welcome to the AI Club MCQ</h1>
-        <p class="lead mt-4 fade-in">This is a multiple-choice quiz to test your knowledge in Artificial Intelligence and related topics. You will be ranked based on the time taken to answer the questions and your Score. Press the Button to start the Session.</p>
-        <button id="startQuiz" class="btn btn-primary mt-3 btn-lg fade-in">Start Quiz</button>
-    </div>
+    
+    
+    {% block What%}
+        <div class="container text-center mt-5 mainbox">
+            <h1 class="display-4 fade-in">Welcome to the AI Club MCQ</h1>
+            <p class="lead mt-4 fade-in">This is a multiple-choice quiz to test your knowledge in Artificial Intelligence and related topics. You will be ranked based on the time taken to answer the questions and your Score. Press the Button to start the Session.</p>
+            <button id="startQuiz" class="btn btn-primary mt-3 btn-lg fade-in">Start Quiz</button>
+        </div>
+    {% endblock %}
     
     <div class="mt-5 Questions">
         {% block content %} {% endblock %}

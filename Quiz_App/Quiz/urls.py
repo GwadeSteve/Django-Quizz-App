@@ -5,4 +5,5 @@ app_name = "Quiz"
 
 urlpatterns = [
     path('',views.main,name="home"),
+    path('leaderboard/',views.leaderboard,name="leaderboard"),
 ]

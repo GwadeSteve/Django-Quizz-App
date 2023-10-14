@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from Quiz.models import Question
+from Users.models import CustomUser
 
 def main(request):
     user = request.user
@@ -8,8 +9,7 @@ def main(request):
     if request.method == 'POST':
         Score = 0
         time_taken = int(request.POST.get('time_taken', 0))
-        users_answers = request.POST.copy()  # Create a copy of the POST data
-        # Remove the CSRF token from the copied data
+        users_answers = request.POST.copy() 
         if 'csrfmiddlewaretoken' in users_answers:
             del users_answers['csrfmiddlewaretoken']
         count = 0
@@ -20,7 +20,7 @@ def main(request):
 
             if user_answer == question.answer:
                 Score += 10
-        user.score = Score
+        user.points = Score
         user.time_taken = time_taken
         user.save()
         Total = count*10
@@ -39,6 +39,14 @@ def main(request):
             'questions': questions,
         }
         return render(request, 'Quiz/quiz.html', context)
+
+def leaderboard(request):
+    leaderboard = CustomUser.objects.order_by('-points', 'time_taken')
+    context = {
+        'leaderboard': leaderboard,
+    }
+    return render(request, 'Quiz/leaderboard.html', context)
+
 
     
 
