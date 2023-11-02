@@ -1,0 +1,155 @@
+{
+    "questions": [{
+            "text": "What does AI stand for?",
+            "op1": "Artificial Internet",
+            "op2": "Artificial Intelligence",
+            "op3": "All Inclusive",
+            "op4": "Artistic Illumination",
+            "answer": "op2"
+        },
+        {
+            "text": "Which programming language is widely used in machine learning?",
+            "op1": "Java",
+            "op2": "Python",
+            "op3": "C++",
+            "op4": "JavaScript",
+            "answer": "op2"
+        },
+        {
+            "text": "What is the purpose of a neural network's activation function?",
+            "op1": "To increase model complexity",
+            "op2": "To control the learning rate",
+            "op3": "To introduce non-linearity",
+            "op4": "To visualize data",
+            "answer": "op3"
+        },
+        {
+            "text": "What is backpropagation in deep learning?",
+            "op1": "A method for training neural networks",
+            "op2": "A visualization technique",
+            "op3": "A type of neural network",
+            "op4": "A deep learning library",
+            "answer": "op1"
+        },
+        {
+            "text": "Which mathematical concept is fundamental in machine learning optimization?",
+            "op1": "Matrix multiplication",
+            "op2": "Calculus",
+            "op3": "Statistics",
+            "op4": "Geometry",
+            "answer": "op2"
+        },
+        {
+            "text": "What is a popular machine learning framework for Python?",
+            "op1": "Scikit-learn",
+            "op2": "TensorFlow",
+            "op3": "Keras",
+            "op4": "PyTorch",
+            "answer": "op1"
+        },
+        {
+            "text": "Which language is often used for statistical analysis and data visualization?",
+            "op1": "Java",
+            "op2": "C#",
+            "op3": "Python",
+            "op4": "Ruby",
+            "answer": "op3"
+        },
+        {
+            "text": "What is the purpose of cross-validation in machine learning?",
+            "op1": "To validate the machine learning model",
+            "op2": "To divide data into training and test sets",
+            "op3": "To perform feature selection",
+            "op4": "To calculate model accuracy",
+            "answer": "op2"
+        },
+        {
+            "text": "Which algorithm is often used for clustering data points?",
+            "op1": "Linear regression",
+            "op2": "K-nearest neighbors",
+            "op3": "Gradient descent",
+            "op4": "K-means",
+            "answer": "op4"
+        },
+        {
+            "text": "In reinforcement learning, what does the agent aim to maximize?",
+            "op1": "Supervised loss",
+            "op2": "Q-value",
+            "op3": "Total reward",
+            "op4": "Exploration rate",
+            "answer": "op3"
+        },
+        {
+            "text": "Which library is commonly used for data analysis in Python?",
+            "op1": "Matplotlib",
+            "op2": "Numpy",
+            "op3": "Pandas",
+            "op4": "Scipy",
+            "answer": "op3"
+        },
+        {
+            "text": "What is an overfit model in machine learning?",
+            "op1": "A model with high bias",
+            "op2": "A model that fits the training data too closely",
+            "op3": "A model that doesn't generalize well",
+            "op4": "A model with low variance",
+            "answer": "op2"
+        },
+        {
+            "text": "Which of the following is not a type of machine learning?",
+            "op1": "Supervised learning",
+            "op2": "Unsupervised learning",
+            "op3": "Supervised reinforcement learning",
+            "op4": "Semi-supervised learning",
+            "answer": "op3"
+        },
+        {
+            "text": "In linear regression, what is the primary goal of model training?",
+            "op1": "Minimize variance",
+            "op2": "Minimize bias",
+            "op3": "Minimize error",
+            "op4": "Maximize R-squared value",
+            "answer": "op3"
+        },
+        {
+            "text": "Which algorithm is commonly used for text classification?",
+            "op1": "K-means",
+            "op2": "Naive Bayes",
+            "op3": "Decision trees",
+            "op4": "Support vector machines",
+            "answer": "op2"
+        },
+        {
+            "text": "What is a confusion matrix used for in machine learning?",
+            "op1": "Visualization of data",
+            "op2": "Classification accuracy",
+            "op3": "Calculating precision and recall",
+            "op4": "Data preprocessing",
+            "answer": "op3"
+        },
+        {
+            "text": "Which is not a Python library commonly used for AI research?",
+            "op1": "TensorFlow",
+            "op2": "PyTorch",
+            "op3": "Keras",
+            "op4": "Ruby",
+            "answer": "op4"
+        },
+        {
+            "text": "What does RNN stand for in deep learning?",
+            "op1": "Random Neural Network",
+            "op2": "Recursive Neural Network",
+            "op3": "Recurrent Neural Network",
+            "op4": "Regular Neural Network",
+            "answer": "op3"
+        },
+        {
+            "text": "Which loss function is commonly used in binary classification problems?",
+            "op1": "Mean squared error",
+            "op2": "Cross-entropy loss",
+            "op3": "Hinge loss",
+            "op4": "Kullback-Leibler divergence",
+            "answer": "op2"
+        }
+    ]
+}

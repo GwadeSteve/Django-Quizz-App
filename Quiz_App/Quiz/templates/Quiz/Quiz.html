@@ -1,0 +1,65 @@
+{% extends "Quiz/base.html" %}
+{% load static %}
+
+{% block title %}<title>Quizz</title>{% endblock%}
+
+{% block styles %}<link rel="stylesheet" href="{% static 'Quiz/css/quiz.css' %}">{% endblock %}
+
+{% block content %}
+    <div id="quizContent" style="display: none;">
+        <div class="container mt-5 ml-4">
+            <p>Time taken: <span id="timer">0</span>s</p>
+            <form method="post" class="fade-left">
+                {% csrf_token %}
+                <input type="hidden" name="time_taken" id="time_taken" value="0">
+                {% for question in questions %}
+                    <div class="question mb-4">
+                        <h4>{{ question.text }}</h4>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="question_{{ question.id }}" value="op1" id="op1_{{ question.id }}">
+                            <label class="form-check-label" for="op1_{{ question.id }}">{{ question.op1 }}</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="question_{{ question.id }}" value="op2" id="op2_{{ question.id }}">
+                            <label class="form-check-label" for="op2_{{ question.id }}">{{ question.op2 }}</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="question_{{ question.id }}" value="op3" id="op3_{{ question.id }}">
+                            <label class="form-check-label" for="op3_{{ question.id }}">{{ question.op3 }}</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="question_{{ question.id }}" value="op4" id="op4_{{ question.id }}">
+                            <label class="form-check-label" for="op4_{{ question.id }}">{{ question.op4 }}</label>
+                        </div>
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary mt-3 mb-5">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        let seconds = 0;
+        document.getElementById("startQuiz").addEventListener("click", function() {
+            document.getElementById("startQuiz").style.display = "none";
+            document.getElementById("quizContent").style.display = "block";
+            startTimer();
+        });
+        function startTimer() {
+            const timerElement = document.getElementById("timer");
+        
+            function updateTimer() {
+                seconds++;
+                timerElement.textContent = seconds;
+            }
+        
+            setInterval(updateTimer, 1000);
+        }
+        
+        // Update the hidden input field before form submission
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function() {
+            document.getElementById("time_taken").value = seconds;
+        });
+    </script>
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "Quiz/base.html" %}
+{% load static %}
+
+{% block title %}<title>Results</title>{% endblock%}
+
+{% block styles %}<link rel="stylesheet" href="{% static 'Quiz/css/result.css' %}">{% endblock %}
+
+{% block What%}
+<div class="container text-center mt-5 mainbox">
+    <h1 class="display-4 fade-in">How well did you performed ?</h1>
+</div>
+{%endblock%}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="card fadeleft">
+            <div class="card-body">
+                <h5 class="card-title fadeleft" style="padding:20px 0;border-bottom: 1px solid rgba(0,0,0,0.2);">Quiz Results</h5>
+                <p class="card-text fadeIn" style="font-family: 'Poppins', sans-serif;margin-top:20px;">Your Scored: {{ score }}/ {{total }} </p>
+                <p class="card-text fadeIn" style="font-family: 'Poppins', sans-serif;margin-top:20px;">Accuracy: {{ accuracy }}%</p>
+                <p class="card-text fadeIn" style="font-family: 'Poppins', sans-serif;">Time Taken: {{ time_taken }} seconds</p>
+                <p class="card-text fadeIn" style="font-family: 'Poppins', sans-serif;">Position: </p>
+            </div>
+        </div>
+        <div class="mt-3">
+            <a href="{% url 'Quiz:home' %}" class="btn btn-primary">Try Again</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById("startQuiz").style.display = "none";
+    </script>
+{% endblock content %}
